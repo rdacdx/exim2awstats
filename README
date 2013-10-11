@@ -1,0 +1,18 @@
+exim2awstats is a PHP script that can translate the log files from the 
+Exim MTA (http://exim.org) into a format that can be used by the log 
+analyzer AWStats (http://awstats.sourceforge.net).  AWStats will be able 
+to show counts/sizes of mailings, the usual hourly/daily/monthly/yearly 
+statistics, the top sender hosts/receiver email addresses/sender email 
+addresses, and SMTP errors for those who use the Exim MTA.
+
+Simple modifications to the AWStats template configuration file can 
+utilize the script to analyze both successful and failed SMTP 
+transactions.  The script also informs the user about log lines that it 
+is unable to handle and can optionally e-mail that information back to 
+the user.  This can be useful when AWStats' execution is handled in an 
+automated fashion (e.g. cron).  Typically, unknown lines will be new 
+types of errors that the script does not yet know about.  The logging of 
+successful mailings doesn't vary much.  Unknown informational lines 
+could also be found but they are unlikely to affect the information that 
+AWStats is seeking.  This information about unknown lines can be used to 
+update the script in future versions.

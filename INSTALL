@@ -1,0 +1,70 @@
+exim2awstats Installation:
+
+(1) This script was intended to be interpreted by PHP5+.  Older versions 
+    may work but there are no guarantees.
+
+(2) This script was developed for use by AWStats 6.6.  May work with 
+    previous versions as well.
+
+(3) Open exim2awstats.php and make any changes you wish in the 
+    configuration section near the top.  The configurable elements are 
+    documented there.
+
+(4) Take the template awstats configuration file and make these changes:
+
+    (a) LogType=M
+
+    (b) If you specified a log file location in step (3) then:
+
+        LogFile="php (PATH TO WHERE YOU PUT exim2awstats.php) |"
+
+        i.e. LogFile="php /usr/local/bin/exim2awstats.php |"
+
+        Otherwise:
+
+        LogFile="php (PATH TO WHERE YOU PUT exim2awstats.php) (PATH TO YOUR LOG FILE) |"
+
+        i.e. LogFile="php /usr/local/bin/exim2awstats.php /var/log/exim/main.log |"
+
+        The second case is handy for processing multiple log files.
+
+    (c) LogFormat="%time2 %host $host_r %logname %bytesd %email %email_r %url %method %code"
+
+    (d) LogSeparator=" "
+
+    (e) Make any other necessary changes for your situation (SiteDomain, 
+        HostAliases, etc.) plus the following changes from 
+        http://awstats.sourceforge.net/docs/awstats_faq.html#MAIL for proper
+        display purposes:
+
+        LevelForBrowsersDetection=0
+        LevelForOSDetection=0
+        LevelForRefererAnalyze=0
+        LevelForRobotsDetection=0
+        LevelForWormsDetection=0
+        LevelForSearchEnginesDetection=0
+        LevelForFileTypesDetection=0
+        ShowMenu=1
+        ShowSummary=HB
+        ShowMonthStats=HB
+        ShowDaysOfMonthStats=HB
+        ShowDaysOfWeekStats=HB
+        ShowHoursStats=HB
+        ShowDomainsStats=0
+        ShowHostsStats=HBL
+        ShowAuthenticatedUsers=0
+        ShowRobotsStats=0
+        ShowEMailSenders=HBML
+        ShowEMailReceivers=HBML
+        ShowSessionsStats=0
+        ShowPagesStats=0
+        ShowFileTypesStats=0
+        ShowFileSizesStats=0
+        ShowBrowsersStats=0
+        ShowOSStats=0
+        ShowOriginStats=0
+        ShowKeyphrasesStats=0
+        ShowKeywordsStats=0
+        ShowMiscStats=0
+        ShowHTTPErrorsStats=0
+        ShowSMTPErrorsStats=1
