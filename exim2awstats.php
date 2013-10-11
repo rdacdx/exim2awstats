@@ -142,7 +142,7 @@
 
   foreach($mailings as $id => $mailing) {
 
-    if($mailing['error'] != "") proc_error($mailing['error']);
+    if(isset($mailing['error']) && $mailing['error'] != "") proc_error($mailing['error']);
     else {
 
       if((count($mailing['to']) == 0) || ($mailing['from'] == "")) continue;
@@ -294,7 +294,7 @@
     return ($a['ts'] < $b['ts']) ? -1 : 1;
   }
 
-  usort($output, cmp);
+  usort($output, "cmp");
 
   // Output loop.
 
@@ -329,7 +329,12 @@
     }
     else $to_host = "UNKNOWN";
 
-    $code = $o['code'];
+    if(isset($o['code'])) {
+      $code = $o['code'];
+    }
+    else {
+      $code = '';
+    }
     if(($code == "") || ($code < 0)) $code = 250;
 
     $proto = "SMTP";
